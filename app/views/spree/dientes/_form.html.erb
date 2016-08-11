@@ -1,0 +1,33 @@
+<%= form_for(@diente) do |f| %>
+  <% if @diente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diente.errors.count, "error") %> prohibited this diente from being saved:</h2>
+
+      <ul>
+      <% @diente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :zona_id %><br>
+      <%= collection_select(:diente, :zona_id, Spree::Zona.all, :id, :nombre) %>
+      <script src="multiple-select.js"></script>
+              <script>
+                  $("select").multipleSelect({
+                      single: true,
+                      multipleWidth: 55,
+                      width: '100%'
+                  });
+              </script>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

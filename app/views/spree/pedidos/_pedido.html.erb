@@ -1,0 +1,29 @@
+<div id="paginator">
+			
+</div>
+<table id="table-resultados" class="table table-striped order-summary" align="right">
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Fecha de Realización</th>
+	      <th>Nombre del Paciente</th>
+	      <th>Trabajo</th>
+	      <th>Material</th>
+	      <th>Diente</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	      <tr>
+	        <td><%= pedido.id %></td>
+	        <td><%= pedido.created_at.strftime("%d/%m/%Y - %T") %></td>
+	        <td><%= pedido.nombres %>&nbsp;<%= pedido.apellidos %></td>
+	        <td><%= pedido.trabajo.nombre %></td>
+	        <td><%= pedido.material.nombre %></td>
+	        <td><%= pedido.diente.numero %></td>
+	      </tr>
+	  </tbody>
+	</table>
+		
+<br>

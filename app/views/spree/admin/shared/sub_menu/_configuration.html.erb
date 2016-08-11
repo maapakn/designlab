@@ -1,0 +1,4 @@
+<ul data-hook="admin_configurations_sidebar_menu" class="collapse nav nav-pills nav-stacked" id="sidebar-configuration">
+  <%= configurations_sidebar_menu_item(Spree.t(:general_settings), spree.edit_admin_general_settings_path) if can? :manage, Spree::Config %>
+  <%= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
+</ul>

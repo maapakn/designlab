@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<div class="table table-striped order-summary">
+
+  <p>
+    <h3>Pedido ID <%= @pedido.id %></h3>
+  </p>
+
+  <p>
+    <strong>Usuario:</strong>
+    <%= @pedido.user.nombre %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @pedido.user.email %>
+  </p>
+
+  <p>
+    <strong>Dirección de Despacho:</strong>
+    <%= @pedido.user.direccion %>
+  </p>
+
+  <p>
+    <strong>Fecha de Realización:</strong>
+    <%= @pedido.created_at.strftime("%d/%m/%Y - %T") %>
+  </p>
+
+  <p>
+    <strong>Nombre Paciente:</strong>
+    <%= @pedido.nombres %>&nbsp;<%= @pedido.apellidos %>
+  </p>
+
+  <p>
+    <strong>Trabajo:</strong>
+    <%= @pedido.trabajo.nombre %>
+  </p>
+
+  <p>
+    <strong>Material:</strong>
+    <%= @pedido.material.nombre %>
+  </p>
+
+  <% if @pedido.observacion? %>
+  <p>
+    <strong>Observación:</strong>
+    <%= @pedido.observacion %>
+  </p>
+  <% end %>
+
+  <% if @pedido.file? %>
+  <p>
+    <strong>STL:</strong>
+    <%= link_to "Download", @pedido.file.url %>
+  </p>
+  <% end %>
+
+  <% if @pedido.cover_file_name? %>
+  <p>
+    <strong>Imagen de Observación:</strong>
+    <%= link_to @pedido.cover_file_name, @pedido.cover.url %>
+  </p>
+  <% end %>
+
+  <p>
+    <strong>Diente:</strong>
+      <%= @pedido.diente.numero %>
+  </p>
+
+  <p>
+    <strong>Estado del Pedido:</strong>
+      <%= @pedido.state %>
+  </p>
+
+  <% if @pedido.respuesta? %>
+  <p>
+    <strong>Respuesta:</strong>
+    <%= @pedido.respuesta %>
+  </p>
+  <% end %>
+
+  <p>
+    <br><br><%= link_to image_tag("3.png", size: "40"), admin_pedidos_path %>
+    <br><strong>Volver</strong>
+  </p>
+
+</div>

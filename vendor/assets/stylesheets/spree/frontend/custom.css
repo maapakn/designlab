@@ -1,0 +1,68 @@
+#spree-footer{
+	width: 100%;
+	bottom: 0;
+}
+#spree-header{
+	background: #FFFFFF;
+	background: url('fondo.jpg') no-repeat center center fixed;
+}
+#spree-header #header{
+	background: #FFFFFF;
+	background: url('fondo.jpg') no-repeat center center fixed;
+}
+nav.col-md-12{
+	background: #3577B0;
+}
+#link-to-login{
+	background: #3577B0;
+	border-radius: 15px;
+}
+#my-account{
+	background: #3577B0;
+	border-radius: 15px;
+	left: -10px;
+}
+#logout{
+	background: #3577B0;
+	border-radius: 15px;
+}
+div#form-pedido.col-md-6.col-md-offset-3{
+	margin-left: auto;
+	width: 847px;
+}
+table#pedidos-activos.table.table-striped.order-summary{
+	width: 840px;
+}
+table#table-resultados.table.table-striped.order-summary{
+	width: 855px;
+}
+textarea{
+	resize: none;
+}
+body{
+	background: url('fondo.jpg') no-repeat center center fixed;
+}
+.border_right{
+	border-right: solid 2px #AAA;
+}
+.border_bottom{
+	border-bottom: solid 2px #AAA;
+}
+label > input{ /* HIDE RADIO */
+	visibility: hidden; /* Makes input not-clickable */
+	position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+	cursor:pointer;
+	border:2px solid transparent;
+}
+table#dientes.pull-right{
+	width: 50%;
+}
+textarea#pedido_observacion.form-control{
+	width: 60%
+}
+.list-group-item{
+	padding: 50px 15px;
+	font-size: 17px;
+}

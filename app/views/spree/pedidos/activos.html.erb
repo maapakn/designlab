@@ -1,0 +1,58 @@
+<% content_for :sidebar do %>
+  <div data-hook="homepage_sidebar_navigation">
+    <%= render :partial => 'spree/shared/taxonomies' %>
+  </div>
+<% end %>
+<!--	<%= form_tag(activos_path, :method => "get", id: "search-form") do %> 
+	 text field tag=action,args,identifier,placeholdertext... 
+	<div class="form-group">
+	<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Buscar ID", type: "search", data: {autocomplete: activos_autocomplete_pedido_id_path} %>
+	</div>  
+	<%= submit_tag "Buscar", class: "btn btn-success" %>
+	<%end%>
+<script type="text/javascript" charset="utf-8">
+  $('#search').bind('railsAutocomplete.select', function(event, data){
+  $('#search-form').submit()
+  });
+</script> -->
+		<% if @pedido.present? %>
+		<h3>Pedidos Activos</h3>
+		<table class="table table-striped order-summary">
+		  <thead>
+		    <tr>
+		      <th>Id</th>
+		      <th>Fecha de Realización</th>
+		      <th>Nombre del Paciente</th>
+		      <th>Trabajo</th>
+		      <th>Material</th>
+		      <th>Observación</th>
+		      <th>Estado</th>
+		      <th>Diente</th>
+		      <th>Ver</th>
+		      <th colspan="8"></th>
+		    </tr>
+		  </thead>
+		<% end %>
+		  <tbody>
+		    <% @pedido.each do |p| %>
+		      <tr>
+		        <td><%= p.id %></td>
+		        <td><%= p.created_at.strftime("%d/%m/%Y - %T") %></td>
+		        <td><%= p.nombres %>&nbsp;<%= p.apellidos %></td>
+		        <td><%= p.trabajo.nombre %></td>
+		        <td><%= p.material.nombre %></td>
+		        <td><%= p.observacion %></td>
+		        <td><%= p.state %></td>
+		        <td><%= p.diente.numero %></td>
+		        <td><%= link_to image_tag("4.png", size: "25"), show_activos_path(p) %></td>
+		        <% if p.alerta? %>
+		        <td><%= link_to image_tag("5.png", size: "25"), edit_pedido_path(p), remote: true %></td>
+		        <% end %>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+		<%= paginate @pedido %>
+<% if !@pedido.present? %>
+	<div class="alert alert-info"><%= "No tiene Pedidos Activos" %></div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @pedido.errors.empty? %>
+  $('#notice').addClass("alert alert-notice").html("Su Respuesta ha sido Enviada").show();
+  $('#pedido-modal').modal('hide');
+<% else %>
+  // show first error
+  alert('<%= @pedido.errors.full_messages[0] %>');
+<% end %>

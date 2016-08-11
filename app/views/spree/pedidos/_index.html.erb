@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped order-summary">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Fecha de Realización</th>
+      <th>Nombre del Paciente</th>
+      <th>Trabajo</th>
+      <th>Material</th>
+      <th>Observación</th>
+      <th>Estado</th>
+      <th>Diente</th>
+      <th>Ver</th>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedido.each do |p| %>
+      <tr>
+        <td><%= p.id %></td>
+        <td><%= p.created_at.strftime("%d/%m/%Y - %T") %></td>
+        <td><%= p.nombres %>&nbsp;<%= p.apellidos %></td>
+        <td><%= p.trabajo.nombre %></td>
+        <td><%= p.material.nombre %></td>
+        <td><%= p.observacion %></td>
+        <td><%= p.state %></td>
+        <td><%= p.diente.numero %></td>
+        <td><%= link_to image_tag("4.png", size: "25"), pedido_path(p) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @pedido %>
+<br>
+

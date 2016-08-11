@@ -1,0 +1,13 @@
+<% if spree_user_signed_in? %>
+	<% content_for :sidebar do %>
+	  <div data-hook="homepage_sidebar_navigation">
+	    <%= render :partial => 'spree/shared/taxonomies' %>
+	  </div>
+	<% end %>
+<% end %>
+
+<% if spree_user_signed_in? %>
+	<%= render partial: 'spree/home/welcome_message_user' %>
+<% else %>
+	<%= render partial: 'spree/home/welcome_message' %>
+<%end%>

@@ -1,0 +1,26 @@
+<div data-hook="homepage_sidebar_navigation">	
+	<%= render :partial => 'spree/shared/sidebars' %>
+</div>
+<h3>Reporte de Trabajos</h3>
+<div id="content" class='col-sm-8 col-md-9' data-hook>
+	<table class="table table-striped order-summary">
+	    <thead>
+	      <tr>
+	      	<th>Trabajos</th>
+	        <th class="pull-right">Total Realizado</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% @pedidos.each do |pedido| %>
+	        <tr>
+	          <td><%= p = pedido.trabajo.nombre %></td>
+	          <td class="pull-right"><%= Spree::Pedido.where(estado_pago: 2).joins(:trabajo).where("spree_trabajos.nombre = ?",p).count %></td>
+	        </tr>
+	      <% end %>
+	    </tbody>
+  </table>
+  <%= paginate @pedidos %>
+  	<h5>Gráfico Total de Trabajos Últimos 6 Meses:</h5>
+    <%= column_chart @grafico, id: "trabajo-chart", width: "800px", height: "500px" %>
+</div>

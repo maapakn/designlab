@@ -1,0 +1,52 @@
+<%= form_for(@pedido, url: admin_pedido_path(@pedido), html: {method: "patch"}) do |f| %>
+   <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "errores") %> han prohibido editar este pedido:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div data-hook="admin_product_form_fields">
+    <div class="row">
+            <h3>Pedido: <%= @pedido.id %>, Usuario: <%= @pedido.user.nombre %></h3>
+            <div class="form-group">
+              <%= f.label :alerta, "Ingrese Alerta" %><br>
+              <%= f.text_area :alerta, size:"5x5", class: 'form-control', :placeholder => "Ingrese Alerta del Pedido" %>
+            </div>
+            <div class="field">
+              <br>Adjunte Archivo de Alerta: <%= f.file_field :image %><br>
+            </div>
+            <div class="form-group">
+              <label>Actualizar Estado</label>
+              <div>
+              <select name="pedido[state]" multiple="multiple">
+                <option value="Recepcionado por Laboratorio" selected>Recepcionado por Laboratorio</option>               
+                <option value="Vaciado y Troquelado">Vaciado y Troquelado</option>   
+                <option value="Diseño (CAD)">Diseño (CAD)</option>
+                <option value="Fresado (CAM)">Fresado (CAM)</option>
+                <option value="Caracterización">Caracterización</option> 
+                <option value="Control">Control</option>               
+                <option value="Despacho">Despacho</option>               
+                <option value="Facturado">Facturado</option>               
+              </select>
+             <script src="multiple-select.js"></script>
+              <script>
+                  $("select").multipleSelect({
+                      single: true,
+                      selectAll: false,
+                      multipleWidth: 55,
+                      width: '100%'
+                  });
+              </script>
+             </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Actualizar Pedido", class: 'btn btn-primary btn-success' %>
+            </div>
+    </div>
+  </div>
+<% end %>

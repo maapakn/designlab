@@ -1,0 +1,89 @@
+<%= render :partial => 'spree/shared/sidebar_show' %>
+<p id="notice"><%= notice %></p>
+
+<div id="content" class="col-sm-8 col-md-9">
+  
+  <p>
+    <h3><% if @pedido.alerta? %><%= link_to image_tag("5.png", align: "right", size: "40"), edit_pedido_path, remote: true %><% end %>Pedido ID <%= @pedido.id %></h3>
+  </p>
+
+  <p>
+    <strong>Fecha de Realización:</strong>
+    <%= @pedido.created_at.strftime("%d/%m/%Y - %T") %>
+  </p>
+
+  <p>
+    <strong>Nombre:</strong>
+    <%= @pedido.nombres %>&nbsp;<%= @pedido.apellidos %>
+  </p>
+
+  <p>
+    <strong>Trabajo:</strong>
+    <%= @pedido.trabajo.nombre %>
+  </p>
+
+  <p>
+    <strong>Material:</strong>
+    <%= @pedido.material.nombre %>
+  </p>
+
+  <% if @pedido.observacion? %>
+  <p>
+    <strong>Observación:</strong>
+    <%= @pedido.observacion %>
+  </p>
+  <% end %>
+
+  <% if @pedido.file? %>
+  <p>
+    <strong>STL:</strong>
+    <%= link_to "Download", @pedido.file.url %>
+  </p>
+  <% end %>
+
+  <% if @pedido.cover_file_name? %>
+  <p>
+    <strong>Imagen de Observación:</strong>
+    <%= link_to @pedido.cover_file_name, @pedido.cover.url %>
+  </p>
+  <% end %>
+
+  <p>
+    <strong>Diente:</strong>
+      <%= @pedido.diente.numero %>
+  </p>
+
+  <p>
+    <strong>Estado del Pedido:</strong>
+    <div class="estado-pedido">
+      <%if @pedido.state == "Pago Recibido"%>
+        <img src="/assets/1_icono_recepcionado_por_laboratorio.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Recepcionado por Laboratorio"%>
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40" title="Estado Actual: Recepcionado por Laboratorio"> > <img src="/assets/2_icono_vaciado_troquelado.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Vaciado y Troquelado"%>
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Diseño (CAD)" %> 
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado.png_on" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Fresado (CAM)" %>
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado_on.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital_on.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Caracterización" %> 
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado_on.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3_on.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital_on.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Control" %> 
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado_on.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3_on.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital_on.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control_on.png" width="40" height="40"> > <img src="/assets/7_icono_despachado.png" width="40" height="40">
+      <% end %>
+      <%if @pedido.state == "Despacho" %> 
+        <img src="/assets/1_icono_recepcionado_por_laboratorio_on.png" width="40" height="40"> > <img src="/assets/2_icono_vaciado_troquelado_on.png" width="40" height="40"> > <img src="/assets/3_icono_escaneado_on.png" width="40" height="40"> > <img src="/assets/5_icono_fresado_idea3_on.png" width="40" height="40"> > <img src="/assets/4_icono_diseno-digital_on.png" width="40" height="40"> > <img src="/assets/6_icono_maquillaje_y_control_on.png" width="40" height="40"> > <img src="/assets/7_icono_despachado_on.png" width="40" height="40">
+      <% end %>
+    </div>
+  </p>
+  <p>
+    <br><br><%= link_to image_tag("3.png", size: "40"), activos_path %>
+    <br><strong>Volver</strong>
+  </p>
+</div>

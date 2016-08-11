@@ -1,0 +1,23 @@
+<% if can? :admin, Spree::Pedido %>
+  <ul class="nav nav-sidebar">
+    <%= tab *Spree::BackendConfiguration::ORDER_TABS, url: spree.admin_pedidos_path, icon: 'shopping-cart' %>
+  </ul>
+<% end %>
+
+<% if can? :admin, Spree::Admin::ReportsController %>
+  <ul class="nav nav-sidebar">
+    <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file'  %>
+  </ul>
+<% end %>
+
+<% if Spree.user_class && can?(:admin, Spree.user_class) %>
+  <ul class="nav nav-sidebar">
+    <%= tab *Spree::BackendConfiguration::USER_TABS, url: spree.admin_users_path, icon: 'user' %>
+  </ul>
+<% end %>
+
+<% if can? :admin, current_store %>
+  <ul class="nav nav-sidebar">
+    <%= main_menu_tree Spree.t(:configurations), icon: "wrench", sub_menu: "configuration", url: "#sidebar-configuration" %>
+  </ul>
+<% end %>

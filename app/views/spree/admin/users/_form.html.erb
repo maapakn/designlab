@@ -1,0 +1,90 @@
+<div data-hook="admin_user_form_fields" class="row">
+  <div class="col-md-6">
+    <%= f.field_container :email, class: ['form-group'] do %>
+      <%= f.label :email, Spree.t(:email) %>
+      <%= f.email_field :email, :class => 'form-control', :placeholder => "Email" %>
+      <%= f.error_message_on :email %>
+    <% end %>
+
+    <%= f.field_container :nombre, class: ['form-group'] do %>
+      <%= f.label :nombre, "Nombre" %>
+      <%= f.text_field :nombre, :class => 'form-control', pattern:"[a-zA-Z, ' ', 'ñ','Ñ','á','é','í','ó','ú','Á','É','Í','Ó','Ú','Ü','ü']+", oninvalid:"setCustomValidity('Favor ingresar solo letras ')", :placeholder => "Nombre" %>
+    <% end %> 
+
+    <%= f.field_container :rut, class: ['form-group'] do %>
+      <%= f.label :rut, "Rut" %>
+      <%= f.text_field :rut, :class => 'form-control', :placeholder => "Rut: 11.111.111-1" %>
+    <% end %>
+
+    <%= f.field_container :institucion, class: ['form-group'] do %>
+      <%= f.label :institucion, "Nombre de Consulta o Clínica" %>
+      <%= f.text_field :institucion, :class => 'form-control', :placeholder => "Nombre de Consulta o Clínica" %>
+    <% end %>
+
+    <% if @user.facturacion == "Si" %>
+    <%= f.field_container :rutf, class: ['form-group'] do %>
+      <%= f.label :rutf, "Rut Empresa" %>
+      <%= f.text_field :rutf, :class => 'form-control', :placeholder => 'Rut Empresa' %>
+    <% end %>
+
+    <%= f.field_container :rsocialf, class: ['form-group'] do %>
+      <%= label :rsocialf, "Razón Social" %>
+      <%= f.text_field :rsocialf, :class => 'form-control', :placeholder => 'Razón Social' %>
+    <% end %>
+    <% end %>
+
+    <div data-hook="admin_user_form_roles" class="form-group">
+      <strong><%= Spree.t(:roles) %></strong>
+      <%= f.collection_check_boxes :spree_role_ids, Spree::Role.all, :id, :name do |role_form| %>
+        <div class="checkbox">
+          <%= role_form.label for: "user_spree_role_#{role_form.object.name}" do %>
+            <%= role_form.check_box id: "user_spree_role_#{role_form.object.name}" %>
+            <%= role_form.object.name %>
+          <% end %>
+        </div>
+      <% end %>
+      <h5>Seleccione el tipo de Impresión</h5>
+      <%= f.label :roles, 'Impresion Convencional:' %>
+      <%= f.radio_button :roles_mask, 'useranalogo', :checked => true %>
+      <%= f.label :roles, 'Impresion Digital:' %>
+      <%= f.radio_button :roles_mask, 'userdigital'%>
+    </div>
+
+  </div>
+
+  <div data-hook="admin_user_form_password_fields" class="col-md-6">
+    <%= f.field_container :password, class: ['form-group'] do %>
+      <%= f.label :password, Spree.t(:password) %>
+      <%= f.password_field :password, :class => 'form-control' %>
+      <%= f.error_message_on :password %>
+    <% end %>
+
+    <%= f.field_container :password_confirmation, class: ['form-group'] do %>
+      <%= f.label :password_confirmation, Spree.t(:confirm_password) %>
+      <%= f.password_field :password_confirmation, :class => 'form-control' %>
+      <%= f.error_message_on :password_confirmation %>
+    <% end %>
+
+    <%= f.field_container :telefono, class: ['form-group'] do %>
+      <%= f.label :telefono, "Teléfono" %>
+      <%= f.text_field :telefono, :class => 'form-control', :placeholder => "Teléfono" %>
+    <% end %>
+
+    <%= f.field_container :direccion, class: ['form-group'] do %>
+      <%= f.label :direccion, "Dirección" %>
+      <%= f.text_field :direccion, :class => 'form-control', :placeholder => "Dirección de Despacho" %>
+    <% end %>
+
+    <% if @user.facturacion == "Si" %>
+    <%= f.field_container :girof, class: ['form-group'] do %>
+      <%= f.label :girof, "Giro" %>
+      <%= f.text_field :girof, :class => 'form-control', :placeholder => 'Giro' %>
+    <% end %>
+
+    <%= f.field_container :direccionf, class: ['form-group'] do %>
+      <%= f.label :direccionf, "Dirección de Facturación" %>
+      <%= f.text_field :direccionf, :class => 'form-control', :placeholder => 'Dirección de Facturación' %>
+    <% end %>
+    <% end %>
+  </div>
+</div>

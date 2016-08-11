@@ -1,0 +1,51 @@
+<style type="text/css">
+  #total.list-group-item{
+    padding: 10px 15px;
+    font-size: inherit;
+  }  
+</style>
+<% if @pedidos.present? %>
+  <h3>Mis Pedidos</h3>
+
+  <table class="table table-striped order-summary">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Diente</th>
+        <th>Trabajo</th>
+        <th>Material</th>
+        <th>Precio</th>
+        <th colspan="3
+        "></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pedidos.each do |pedido| %>
+        <tr>
+          <td><%= pedido.nombres %>&nbsp;<%= pedido.apellidos %></td>
+          <td><%= pedido.diente.numero %></td>
+          <td><%= pedido.trabajo.nombre %></td>
+          <td><%= pedido.material.nombre %></td>
+          <td>$<%= pedido.material.precio%></td>
+          <td class="pull-right"><%= link_to 'Eliminar', pedido, method: :delete, class:"btn btn-danger", data: { confirm: '¿Esta seguro que desea Eliminar?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <li class="list-group-item" id="total">
+    <div class="row">
+      <div class="col-md-6"><b>Total</b></div>
+      <div class="col-md-6">
+        <p class="text-right">$<%=current_spree_user.costo_compra_pendientes%> CLP</p>
+      </div>
+    </div>
+  </li>
+  <br>
+  <div data-no-turbolinks class="pull-right">
+    <%=link_to(pedidos_express_path, class: "btn btn-info btn-lg") do%>
+        Pagar
+    <%end%>
+  </div>
+<% end %>

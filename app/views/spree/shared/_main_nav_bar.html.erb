@@ -1,0 +1,16 @@
+<nav class="col-md-12">
+  <div id="main-nav-bar" class="navbar">
+    <% if spree_user_signed_in? %>
+    <ul class="nav navbar-nav" data-hook>
+      <li id="home-link" data-hook >
+      <a href="/"><img src="/assets/icono_casita.png" width="30" height="30">&nbsp;Inicio</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" data-hook>
+    	<li>
+    		<a>Dr(a) <%= @current_spree_user.nombre %></a>
+    	</li>
+    </ul>
+    <% end %>
+  </div>
+</nav>

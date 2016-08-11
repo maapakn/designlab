@@ -1,0 +1,18 @@
+<div data-hook="homepage_sidebar_navigation">	
+	<%= render :partial => 'spree/shared/sidebars' %>
+</div>
+<div>
+	<p>Reporte Por Fecha</p>
+	<%= form_tag "/search/create", method: :get, remote: true, id: "search-form" do %>
+		<%= text_field_tag :desde, nil, placeholder: "Ingrese Fecha Inicial" %>
+		<%= text_field_tag :hasta, nil, placeholder: "Ingrese Fecha Final" %>
+		<%= content_tag :button, class: "btn btn-success", type: :submit do %>
+		Buscar
+		<% end %>
+	<% end %>
+	<br>
+</div>
+
+<div class="table table-striped order-summary" id="resultados">
+	<br>
+</div>

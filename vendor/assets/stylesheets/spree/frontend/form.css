@@ -1,0 +1,68 @@
+.form-control {
+  box-shadow: none;
+  width: 100%;
+}
+
+.form-pedido {
+  box-shadow: none;
+  width: 50%;
+}
+
+p{
+  margin: 0 0 10px;
+}
+
+label {
+
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+
+  input[type="radio"], input[type="checkbox"] {
+    margin-top: 2px;
+  }
+}
+
+span.or {
+  @extend label;
+
+  padding: 0 10px;
+}
+
+input.form-control {
+  &:active, &:focus {
+    border-color: lighten($brand-success, 0);
+    box-shadow: none;
+  }
+}
+
+.form-group {
+  &.withError {
+    label, .formError, .required {
+      color: $brand-danger
+    }
+
+    input {
+      border-color: $brand-danger;
+    }
+  }
+}
+
+.fullwidth-input {
+  display: block;
+  width: 100%;
+}
+
+.help-block {
+  color: lighten($gray-light, 20);
+  font-weight: 300;
+}
+
+.checkbox > .help-block {
+  margin-top: 0;
+}
+
+.display-inline {
+  display: inline;
+}

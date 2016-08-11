@@ -1,0 +1,31 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(:sales_totals) %>
+<% end %>
+
+<table class="table" id="listing_users" data-hook>
+  <thead>
+    <tr data-hook="admin_users_index_headers">
+      <th>
+        <strong>Usuario</strong>
+      </th>
+      <th data-hook="admin_users_index_header_actions" class="actions text-right"><strong>Total</strong></th>
+      <th data-hook="admin_users_index_header_actions" class="actions text-right"><strong>Total</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user|%>
+      <tr id="<%= spree_dom_id user %>" data-hook="admin_users_index_rows">
+        <td class='user_email'><%= user.email %></td>
+        <td data-hook="admin_users_index_row_actions" class="actions actions-2 text-right">
+        $<%= user.total_sale %> USD
+        </td>
+        <td data-hook="admin_users_index_row_actions" class="actions actions-2 text-right">
+        $<%= user.total_sales %> CLP
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

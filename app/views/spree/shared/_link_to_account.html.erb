@@ -1,0 +1,12 @@
+<% if spree_current_user %>
+  <li id="my-account">
+  	<a href="/account"><img src="/assets/icono_tuercas.png" width="30" height="30">&nbsp;Mi Cuenta</a>
+  </li>
+  <li id="logout">
+  	<a href="/logout"><img src="/assets/icono_salida_idea2.png" width="30" height="30">&nbsp;Cerrar Sesion</a>
+  </li>
+<% else %>	
+  <li id="link-to-login">
+  	<a href="/login"><img src="/assets/icono_entrada_idea2.png" width="30" height="30">&nbsp;Iniciar Sesion</a>
+  </li>
+<% end %>

@@ -1,0 +1,10 @@
+<div data-hook="homepage_sidebar_navigation">	
+	<%= render :partial => 'spree/shared/sidebars' %>
+</div>
+<h3>Reporte de Gastos</h3>
+<div id="content" class='col-sm-8 col-md-9' data-hook>
+	<h5>Gráfico Total Facturado Último Mes:</h5>
+    <%= column_chart @grafico, id: "trabajo-chart", width: "800px", height: "500px" %>
+	<h5>Gráfico Total Facturado Últimos 6 Meses:</h5>
+    <%= column_chart @grafico2, id: "trabajo-chart2", width: "800px", height: "500px" %>
+</div>

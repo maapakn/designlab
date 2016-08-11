@@ -1,0 +1,7 @@
+<h3 align="center">Noticias de su Pedido</h3>
+
+<% @activities.each do |a| %>
+	<div class="table table-striped order-summary">
+		<%= a.inspect %>
+	</div>
+<% end %>
