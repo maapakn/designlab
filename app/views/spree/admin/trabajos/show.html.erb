@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @trabajo.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_admin_trabajo_path(@trabajo) %> |
+<%= link_to 'Volver', admin_trabajos_path %>

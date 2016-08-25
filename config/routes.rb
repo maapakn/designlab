@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     get'show_activos/:id' => 'pedidos#show_activos', :as => 'show_activos'
     resources :activities
     resources :payments
-    resources :categories
     resources :zonas
     resources :dientes
     resources :pedidos
@@ -27,6 +26,9 @@ Rails.application.routes.draw do
     namespace :admin, path: Spree.admin_path do
       # ...
       resources :pedidos
+      resources :materials 
+      resources :trabajos
+      resources :categories
       # ...
     end
   end

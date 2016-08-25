@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727212925) do
+ActiveRecord::Schema.define(version: 20160824231222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -360,8 +360,6 @@ ActiveRecord::Schema.define(version: 20160727212925) do
     t.datetime "cover_updated_at"
     t.integer  "diente_id"
     t.integer  "estado_pago"
-    t.string   "nombres"
-    t.string   "apellidos"
     t.string   "state"
     t.string   "alerta"
     t.string   "respuesta"
@@ -369,6 +367,8 @@ ActiveRecord::Schema.define(version: 20160727212925) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "nombres"
+    t.string   "apellidos"
   end
 
   add_index "spree_pedidos", ["diente_id"], name: "index_spree_pedidos_on_diente_id", using: :btree

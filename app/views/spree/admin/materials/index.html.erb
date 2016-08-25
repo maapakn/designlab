@@ -1,0 +1,31 @@
+<h2>Materiales</h2>
+
+<table class="table table-striped order-summary">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Trabajo</th>
+      <th>Price USD</th>
+      <th>Precio CLP</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materials.each do |material| %>
+      <tr>
+        <td><%= material.nombre %></td>
+        <td><%= material.trabajo.nombre %></td>
+        <td>$<%= material.price %></td>
+        <td>$<%= material.precio %></td>
+        <td><%= link_to 'Mostrar', admin_material_path(material) %></td>
+        <td><%= link_to 'Editar', edit_admin_material_path(material) %></td>
+        <td><%= link_to 'Eliminar', admin_material_path(material), method: :delete, data: { confirm: '¿Estas seguro que deseas eliminar?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Material', new_admin_material_path %>
