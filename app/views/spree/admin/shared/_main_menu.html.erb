@@ -4,14 +4,6 @@
   </ul>
 <% end %>
 
-<% if can? :admin, Spree::Material %>
-  <ul class="nav nav-sidebar">
-    <li class="sidebar-menu-item">
-      <%= link_to 'Materiales', admin_materials_path, class: 'icon-link with-tip action-basket' %>
-    </li>
-  </ul>
-<% end %>
-
 <% if can? :admin, Spree::Admin::ReportsController %>
   <ul class="nav nav-sidebar">
     <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file'  %>
@@ -21,6 +13,19 @@
 <% if Spree.user_class && can?(:admin, Spree.user_class) %>
   <ul class="nav nav-sidebar">
     <%= tab *Spree::BackendConfiguration::USER_TABS, url: spree.admin_users_path, icon: 'user' %>
+  </ul>
+<% end %>
+
+<% if can? :admin, Spree::Material %>
+  <ul class="nav nav-sidebar">
+    <li class="sidebar-menu-item">
+      <a class="icon-link with-tip action-file" href="/admin/materials" data-original-title="" title="">
+        <span class="icon icon-file"></span>
+        <span class="text">
+          Materiales
+        </span>
+      </a>
+    </li>
   </ul>
 <% end %>
 
