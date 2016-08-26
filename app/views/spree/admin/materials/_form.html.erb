@@ -1,7 +1,7 @@
 <%= form_for(@material, url: admin_materials_path) do |f| %>
   <% if @material.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@material.errors.count, "error") %> prohibited this material from being saved:</h2>
+      <h2><%= pluralize(@material.errors.count, "error") %> han prohibido guardar este material:</h2>
 
       <ul>
       <% @material.errors.full_messages.each do |message| %>

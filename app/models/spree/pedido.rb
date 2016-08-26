@@ -27,6 +27,12 @@ module Spree
     mount_uploader :file, FileUploader
     validates :file, file_size: { less_than: 5.megabytes }
     
+    def comprar
+      self.user.pedidos.each do |pedido|
+          pedido.update(estado_pago: 2)
+      end
+    end
+
     private
 
     def valores_por_default

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   Spree::Core::Engine.routes.draw do
     get "pedidos/express"
+    get "pedidos/comprar"
     get "transactions/checkout"
     get 'search/create'
     get "/ayuda", to: "home#ayuda"

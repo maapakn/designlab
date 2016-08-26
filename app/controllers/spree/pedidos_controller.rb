@@ -50,6 +50,13 @@ module Spree
 	    @pedidos = current_spree_user.pedidos.where(estado_pago: 1)
 	  end
 
+	  def comprar
+	  	@pedidos = current_spree_user.pedidos.update_all(estado_pago: 2)
+	  	respond_to do |format|
+			format.html { redirect_to root_path, notice: 'Su compra ha sido Aceptada.' }
+		end
+	  end
+
 	  def express
 	    cost = current_spree_user.costo_compra_pendiente
 	    response = EXPRESS_GATEWAY.setup_purchase(cost*100,

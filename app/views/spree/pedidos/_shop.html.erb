@@ -45,7 +45,12 @@
   <br>
   <div data-no-turbolinks class="pull-right">
     <%=link_to(pedidos_express_path, class: "btn btn-info btn-lg") do%>
-        Pagar
+        Pagar PayPal
     <%end%>
   </div>
+  <div data-no-turbolinks class="pull-center">
+    <%=link_to(pedidos_comprar_path, class: "btn btn-info btn-lg") do%>
+        Comprar
+    <%end%>
+  </div>  
 <% end %>
