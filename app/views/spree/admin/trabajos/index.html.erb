@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Nombre</th>
+      <th>Categoria</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @trabajos.each do |trabajo| %>
       <tr>
         <td><%= trabajo.nombre %></td>
+        <td><%= trabajo.category.nombre %></td>
         <td><%= link_to 'Mostrar', admin_trabajo_path(trabajo) %></td>
         <td><%= link_to 'Editar', edit_admin_trabajo_path(trabajo) %></td>
         <td><%= link_to 'Eliminar', admin_trabajo_path(trabajo), method: :delete, data: { confirm: '¿Estas seguro que deseas eliminar?' } %></td>

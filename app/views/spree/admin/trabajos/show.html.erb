@@ -5,5 +5,10 @@
   <%= @trabajo.nombre %>
 </p>
 
+<p>
+  <strong>Categoria:</strong>
+  <%= @trabajo.category.nombre %>
+</p>
+
 <%= link_to 'Editar', edit_admin_trabajo_path(@trabajo) %> |
 <%= link_to 'Volver', admin_trabajos_path %>

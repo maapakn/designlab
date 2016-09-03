@@ -1,5 +1,37 @@
-<h1>New Trabajo</h1>
+<h1>Nuevo Trabajo</h1>
 
-<%= render 'form' %>
+<%= form_for(@trabajo, url: admin_trabajos_path) do |f| %>
+  <% if @trabajo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trabajo.errors.count, "error") %> han prohibido que este trabajo se guardara:</h2>
+
+      <ul>
+      <% @trabajo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+      <%= f.label :category_id, 'Categoria' %><br>
+      <%= collection_select(:trabajo, :category_id, Spree::Category.all, :id, :nombre) %>
+      <script src="multiple-select.js"></script>
+              <script>
+                  $("select").multipleSelect({
+                      single: true,
+                      multipleWidth: 55,
+                      width: '100%'
+                  });
+              </script>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Volver', admin_trabajos_path %>

@@ -5,6 +5,21 @@
   <%= @material.nombre %>
 </p>
 
+<p>
+  <strong>Price:</strong>
+  <%= @material.price %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @material.precio %>
+</p>
+
+<p>
+  <strong>Trabajo:</strong>
+  <%= @material.trabajo.nombre %>
+</p>
+
 
 <%= link_to 'Editar', edit_admin_material_path(@material) %> |
 <%= link_to 'Volver', admin_materials_path %>
