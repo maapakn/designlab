@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727212925) do
+ActiveRecord::Schema.define(version: 20160915011908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -354,11 +354,6 @@ ActiveRecord::Schema.define(version: 20160727212925) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "file"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
-    t.integer  "diente_id"
     t.integer  "estado_pago"
     t.string   "nombres"
     t.string   "apellidos"
@@ -371,11 +366,32 @@ ActiveRecord::Schema.define(version: 20160727212925) do
     t.datetime "image_updated_at"
   end
 
-  add_index "spree_pedidos", ["diente_id"], name: "index_spree_pedidos_on_diente_id", using: :btree
   add_index "spree_pedidos", ["material_id"], name: "index_spree_pedidos_on_material_id", using: :btree
   add_index "spree_pedidos", ["shipping_category_id"], name: "index_spree_pedidos_on_shipping_category_id", using: :btree
   add_index "spree_pedidos", ["trabajo_id"], name: "index_spree_pedidos_on_trabajo_id", using: :btree
   add_index "spree_pedidos", ["user_id"], name: "index_spree_pedidos_on_user_id", using: :btree
+
+  create_table "spree_pedidos_dientes", force: :cascade do |t|
+    t.integer  "pedido_id"
+    t.integer  "diente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spree_pedidos_dientes", ["diente_id"], name: "index_spree_pedidos_dientes_on_diente_id", using: :btree
+  add_index "spree_pedidos_dientes", ["pedido_id"], name: "index_spree_pedidos_dientes_on_pedido_id", using: :btree
+
+  create_table "spree_pictures", force: :cascade do |t|
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.integer  "pedido_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "spree_pictures", ["pedido_id"], name: "index_spree_pictures_on_pedido_id", using: :btree
 
   create_table "spree_preferences", force: :cascade do |t|
     t.text     "value"

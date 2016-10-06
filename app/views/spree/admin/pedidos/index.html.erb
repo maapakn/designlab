@@ -2,6 +2,7 @@
   <%= plural_resource_name(Spree::Order) %>
 <% end %>
 <%if @pedido.present?%>
+<% @pedido.each do |p| %>
 <table class="table table-striped order-summary">
   <thead>
     <tr>
@@ -13,15 +14,12 @@
       <th>Material</th>
       <th>Observación</th>
       <th>Estado</th>
-      <th>Diente</th>
-      <th>Editar</th>
-      <th>Ver</th>
+      <th>Diente(s)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pedido.each do |p| %>
       <tr>
         <td><%= p.id %></td>
         <td><%= p.created_at.strftime("%d/%m/%Y - %T") %></td>
@@ -31,9 +29,12 @@
         <td><%= p.material.nombre %></td>
         <td><%= p.observacion %></td>
         <td><%= p.state %></td>
-        <td><%= p.diente.numero %></td>
-        <td><%= link_to image_tag("2.png", size: "25"), edit_admin_pedido_path(p) %></td>
-        <td><%= link_to image_tag("4.png", size: "25"), admin_pedido_path(p) %></td>
+        <% p.dientes.each do |diente| %>
+            <td><%= diente.numero %></td>
+        <% end %>
+        <td><%= link_to image_tag("2.png", size: "25"), edit_admin_pedido_path(p), :title => 'Editar' %></td>
+        <td><%= link_to image_tag("4.png", size: "25"), admin_pedido_path(p), :title => 'Ver' %></td>
+        <td><%= link_to image_tag("icono_basurero.png", size: "25"), admin_pedido_path(p), method: :delete, data: { confirm: '¿Estas seguro que deseas Eliminar?' }, :title => 'Eliminar' %></td>
         <% if p.respuesta? %>
         <td><%= link_to image_tag("5.png", size: "25"), admin_pedido_path(p) %></td>
         <% end %>

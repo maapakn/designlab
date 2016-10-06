@@ -48,6 +48,9 @@
       <%= f.radio_button :roles_mask, 'useranalogo', :checked => true %>
       <%= f.label :roles, 'Impresion Digital:' %>
       <%= f.radio_button :roles_mask, 'userdigital'%>
+      <h5>Usuario Institucional</h5>
+      <%= f.label :institucion, 'Habilitar Usuario' %>
+      <%= f.radio_button :institucion, 'Si', :checked => false %>
     </div>
 
   </div>

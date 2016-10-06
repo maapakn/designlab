@@ -19,7 +19,7 @@ module Spree
 	  	@taxonomies = Spree::Taxonomy.includes(root: :children)
 	  	fecha_actual = Time.current.to_s
 	  	fecha_anterior = 6.month.ago.to_s
-	  	@pedidos = current_spree_user.pedidos.where("estado_pago = 2").page(params[:page]).per(4)
+	  	@pedidos = current_spree_user.pedidos.where("estado_pago = 2").joins(:material).select('distinct on (nombre) *')
 	  	@grafico = current_spree_user.pedidos.where("estado_pago = 2 AND created_at BETWEEN ? AND ?",fecha_anterior,fecha_actual).group_by_month_of_year(:created_at, format: "%B").count
 	  end
 
@@ -29,10 +29,11 @@ module Spree
 	  	fecha_actual = Time.current.to_s
 	  	fecha_anterior = 6.month.ago.to_s
 	  	@grafico = current_spree_user.pedidos.where("estado_pago = 2 AND created_at BETWEEN ? AND ?",fecha_anterior,fecha_actual).group_by_month_of_year(:created_at, format: "%B").count
-	  	@pedidos = current_spree_user.pedidos.where("estado_pago = 2").page(params[:page]).per(4)
+	  	@pedidos = current_spree_user.pedidos.where("estado_pago = 2").joins(:trabajo).select('distinct on (nombre) *')
 	  end
 
 	  def gasto
+	  	@taxonomies = Spree::Taxonomy.includes(root: :children)
 	  	fecha_actual = Time.current.to_s
 	  	fecha_anterior1 = 1.month.ago.to_s
 	  	fecha_anterior = 6.month.ago.to_s

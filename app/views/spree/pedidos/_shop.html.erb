@@ -6,33 +6,33 @@
 </style>
 <% if @pedidos.present? %>
   <h3>Mis Pedidos</h3>
-
+  <% @pedidos.each do |pedido| %>
   <table class="table table-striped order-summary">
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Diente</th>
         <th>Trabajo</th>
         <th>Material</th>
         <th>Precio</th>
-        <th colspan="3
-        "></th>
+        <th align="right">Diente(s)</th>
+        <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @pedidos.each do |pedido| %>
         <tr>
           <td><%= pedido.nombres %>&nbsp;<%= pedido.apellidos %></td>
-          <td><%= pedido.diente.numero %></td>
           <td><%= pedido.trabajo.nombre %></td>
           <td><%= pedido.material.nombre %></td>
           <td>$<%= pedido.material.precio%></td>
-          <td class="pull-right"><%= link_to 'Eliminar', pedido, method: :delete, class:"btn btn-danger", data: { confirm: '¿Esta seguro que desea Eliminar?' } %></td>
+          <% pedido.dientes.each do |diente| %>
+            <td><%= diente.numero %></td>
+          <% end %>
+          <td align="right"><%= link_to 'Eliminar', pedido, method: :delete, class:"btn btn-danger", data: { confirm: '¿Esta seguro que desea Eliminar?' } %></td>
         </tr>
-      <% end %>
     </tbody>
   </table>
+  <% end %>
   <br>
   <li class="list-group-item" id="total">
     <div class="row">
@@ -48,9 +48,11 @@
         Pagar PayPal
     <%end%>
   </div>
+  <% if current_spree_user.institucion == 'Si' %>
   <div data-no-turbolinks class="pull-center">
     <%=link_to(pedidos_comprar_path, class: "btn btn-info btn-lg") do%>
-        Comprar
+        Solicitar
     <%end%>
-  </div>  
+  </div>
+  <% end %>  
 <% end %>

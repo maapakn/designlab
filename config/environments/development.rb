@@ -46,11 +46,11 @@ Rails.application.configure do
   config.after_initialize do
     
     paypal_options = {
-      :login => "admin-facilitator_api1.delab.cl",
-      :password => "B7HENVLUC7UK5VA6",
-      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ASK5vsw6tpXZMwS6ufqSg7jLCjqd"
+      :login => "admin_api1.delab.cl",
+      :password => "THM4D9HRYESC3RXH",
+      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31ACc48cZLOw8bb4tBVmrAGOSNzSCB",
     }
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :live
     #::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end

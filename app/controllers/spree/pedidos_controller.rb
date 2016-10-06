@@ -15,11 +15,11 @@ module Spree
 	  end
 
 	  def edit
-	  	@pedido = Spree::Pedido.find(params[:id])
+	  	@pedido = current_spree_user.pedidos.find(params[:id])
 	  end
 
 	  def update
-		@pedido = Spree::Pedido.update(params[:id], pedido_params)
+		@pedido = current_spree_user.pedidos.update(params[:id], pedido_params)
 	  end
 
 	  def reportes
@@ -30,18 +30,22 @@ module Spree
 	  # GET /pedidos/1
 	  # GET /pedidos/1.json
 	  def show
+	  	@pedidos = current_spree_user.pedidos.where(estado_pago: 2)
+	  	@dientes = Spree::Diente.all
 	    @taxonomies = Spree::Taxonomy.includes(root: :children)
 	  end
 
 	  def show_activos
-	  	@pedido = Spree::Pedido.find(params[:id])
+	    @pedido = Spree::Pedido.find(params[:id])
+	  	@pedidos = current_spree_user.pedidos.where(estado_pago: 2)
+	  	@dientes = Spree::Diente.all
 	  	@taxonomies = Spree::Taxonomy.includes(root: :children)
 	  end
 
 	  # GET /pedidos/new
 	  def new
 	  	@dientes = Spree::Diente.all
-	    @pedido = Spree::Pedido.new
+	    @pedido = current_spree_user.pedidos.new
     	@pedidos = current_spree_user.pedidos.where(estado_pago: 1)
 	    @taxonomies = Spree::Taxonomy.includes(root: :children)
 	  end
@@ -51,9 +55,9 @@ module Spree
 	  end
 
 	  def comprar
-	  	@pedidos = current_spree_user.pedidos.update_all(estado_pago: 2)
+	  	@pedidos = current_spree_user.pedidos.where(estado_pago: 1).update_all(estado_pago: 2, state: "Pendiente de Pago")
 	  	respond_to do |format|
-			format.html { redirect_to root_path, notice: 'Su compra ha sido Aceptada.' }
+			format.html { redirect_to root_path, notice: 'Su solicitud se ha realizado con exito.' }
 		end
 	  end
 
@@ -73,15 +77,22 @@ module Spree
 	  def create
 	    @pedido = current_spree_user.pedidos.new(pedido_params)
 	    @pedido.file = params[:file]
+	    @pedido.dientes = params[:dientes]
 	    @taxonomies = Spree::Taxonomy.includes(root: :children)
 	    
 	    respond_to do |format|
-	     if @pedido.save
-	       format.html { redirect_to new_pedido_path, notice: 'El Pedido se ha creado' }
-	      else
-	        format.html { render :new }
-	        format.json { render json: @pedido.errors, status: :unprocessable_entity }
-	      end
+		    if @pedido.save
+		     	if params[:covers]
+			        # The magic is here ;)
+			        params[:covers].each { |cover|
+			            @pedido.pictures.create(cover: cover)
+			        }
+		        end
+		       	format.html { redirect_to new_pedido_path, notice: 'El Pedido se ha creado' }
+		    else
+		        format.html { render :new }
+		        format.json { render json: @pedido.errors, status: :unprocessable_entity }
+		    end
 	    end
 	  end
 
@@ -109,7 +120,7 @@ module Spree
 
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def pedido_params
-	      params.require(:pedido).permit(:nombres, :apellidos, :observacion, :trabajo_id, :material_id, :cover, :file, :diente_id, :respuesta)
+	      params.require(:pedido).permit(:nombres, :apellidos, :observacion, :trabajo_id, :material_id, :pictures, :file, :respuesta, :diente_ids => [])
 	    end
 	end
 end

@@ -1,6 +1,8 @@
-<div data-hook="homepage_sidebar_navigation">	
-	<%= render :partial => 'spree/shared/sidebars' %>
-</div>
+<% content_for :sidebars do %>
+    <div data-hook="homepage_sidebar_navigation">
+      <%= render :partial => 'spree/shared/taxonomies' %>
+    </div>
+<% end %>
 <h3>Reporte de Gastos</h3>
 <div id="content" class='col-sm-8 col-md-9' data-hook>
 	<h5>Gráfico Total Facturado Último Mes:</h5>

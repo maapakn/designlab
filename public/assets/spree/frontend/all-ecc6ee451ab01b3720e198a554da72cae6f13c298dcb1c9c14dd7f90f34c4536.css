@@ -10524,10 +10524,11 @@ div#form-pedido.col-md-6.col-md-offset-3{
 	width: 847px;
 }
 table#pedidos-activos.table.table-striped.order-summary{
-	width: 840px;
+	width: 847px;
 }
 table#table-resultados.table.table-striped.order-summary{
 	width: 855px;
+	margin-left: auto;
 }
 textarea{
 	resize: none;
@@ -10549,8 +10550,8 @@ label > input + img{ /* IMAGE STYLES */
 	cursor:pointer;
 	border:2px solid transparent;
 }
-table#dientes.pull-right{
-	width: 50%;
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
 }
 textarea#pedido_observacion.form-control{
 	width: 60%
@@ -10558,11 +10559,6 @@ textarea#pedido_observacion.form-control{
 .list-group-item{
 	padding: 50px 15px;
 	font-size: 17px;
-}
-aside#sidebar_show.col-sm-4.col-md-3{
-	.list-group-item{
-		padding: 10px 15px;
-		}	
 }
 .form-control {
   box-shadow: none;

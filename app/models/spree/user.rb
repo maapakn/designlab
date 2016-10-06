@@ -10,8 +10,8 @@ module Spree
     acts_as_paranoid
     after_destroy :scramble_email_and_password
 
-    has_many :pedidos, dependent: :destroy
-    has_many :transactions, dependent: :destroy
+    has_many :pedidos, :dependent => :destroy
+    has_many :transactions, :dependent => :destroy
 
     before_validation :set_login
 

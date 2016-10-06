@@ -10549,20 +10549,15 @@ label > input + img{ /* IMAGE STYLES */
 	cursor:pointer;
 	border:2px solid transparent;
 }
-table#dientes.pull-right{
-	width: 50%;
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
 }
 textarea#pedido_observacion.form-control{
 	width: 60%
 }
-a.list-group-item{
+.list-group-item{
 	padding: 50px 15px;
 	font-size: 17px;
-}
-aside#sidebar_show{
-	a.list-group-item{
-		padding: 10px 15px;
-	}
 }
 .form-control {
   box-shadow: none;

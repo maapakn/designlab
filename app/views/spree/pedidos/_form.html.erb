@@ -1,4 +1,4 @@
-<%= form_for(@pedido) do |f| %>
+<%= form_for(@pedido, :html => {:multipart => true}) do |f| %>
    <% if @pedido.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pedido.errors.count, "errores") %> han prohibido crear este pedido:</h2>
@@ -48,17 +48,18 @@
               <%= f.text_area :observacion, size:"5x2", class: 'form-control', :placeholder => "Ingrese color de la restauraciones y observaciones adicionales" %>
             </div>
             <div class="field">
-              <br><b>5.- Cargar fotografía de referencia (opcional)</b><%= f.file_field :cover %><br>
+              <br><b>5.- Cargar fotografías de referencia (opcional)</b><%= file_field_tag "covers[]", type: :file, multiple: true %><br>
             </div>
             <div class="form-group">
               <table class="pull-center" id="dientes">
-              <b>6.- Seleccione Diente</b>
+              <b>6.- Seleccione Diente(s)</b>
                 <tbody>
                   <tr>
                     <td class="border_bottom">
                       <div class="relative">
                         <label>
-                          <%= f.radio_button :diente_id, '8', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(8) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d18.png", size: "30x70" %>
                           <label class="text-center">1.8</label>
                         </label>
@@ -67,7 +68,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '7', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(7) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d17.png", size: "30x70" %>
                           <label class="text-center">1.7</label>
                         </label>
@@ -76,7 +78,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '6', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(6) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d16.png", size: "30x70" %>
                           <label class="text-center">1.6</label>
                         </label>
@@ -85,7 +88,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '5', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(5) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d15.png", size: "30x70" %>
                           <label class="text-center">1.5</label>
                         </label>
@@ -94,7 +98,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '4', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(4) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d14.png", size: "30x70" %>
                           <label class="text-center">1.4</label>
                         </label>
@@ -103,7 +108,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '3', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(3) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d13.png", size: "30x70" %>
                           <label class="text-center">1.3</label>
                         </label>
@@ -112,7 +118,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '2', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(2) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d12.png", size: "30x70" %>
                           <label class="text-center">1.2</label>
                         </label>
@@ -121,7 +128,8 @@
                     <td class="border_right border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '1', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(1) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d11.png", size: "30x70" %>
                           <label class="text-center">1.1</label>
                         </label>
@@ -130,7 +138,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '9', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(9) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d21.png", size: "30x70" %>
                           <label class="text-center">2.1</label>
                         </label>
@@ -139,7 +148,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '10', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(10) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d22.png", size: "30x70" %>
                           <label class="text-center">2.2</label>
                         </label>
@@ -148,7 +158,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '11', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(11) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d23.png", size: "30x70" %>
                           <label class="text-center">2.3</label>
                         </label>
@@ -157,7 +168,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '12', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(12) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d24.png", size: "30x70" %>
                           <label class="text-center">2.4</label>
                         </label>
@@ -166,7 +178,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '13', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(13) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d25.png", size: "30x70" %>
                           <label class="text-center">2.5</label>
                         </label>
@@ -175,7 +188,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '14', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(14) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d26.png", size: "30x70" %>
                           <label class="text-center">2.6</label>
                         </label>
@@ -184,7 +198,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '15', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(15) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d27.png", size: "30x70" %>
                           <label class="text-center">2.7</label>
                         </label>
@@ -193,7 +208,8 @@
                     <td class="border_bottom">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '16', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(16) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d28.png", size: "30x70" %>
                           <label class="text-center">2.8</label>
                         </label>
@@ -204,7 +220,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '32', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(32) %>
+                          <%= check_box_tag "dientes[]", @diente.id %> 
                           <%= image_tag "dientes/d48.png", size: "30x70" %>
                           <label class="text-center">4.8</label>
                         </label>
@@ -213,7 +230,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '31', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(31) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d47.png", size: "30x70" %>
                           <label class="text-center">4.7</label>
                         </label>
@@ -222,7 +240,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '30', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(30) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d46.png", size: "30x70" %>
                           <label class="text-center">4.6</label>
                         </label>
@@ -231,7 +250,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '29', onClick:"submit()" %>    
+                          <% @diente = Spree::Diente.find(29) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d45.png", size: "30x70" %>
                           <label class="text-center">4.5</label>
                         </label>
@@ -240,7 +260,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '28', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(28) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d44.png", size: "30x70" %>
                           <label class="text-center">4.4</label>
                         </label>
@@ -249,7 +270,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '27', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(27) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d43.png", size: "30x70" %>
                           <label class="text-center">4.3</label>
                         </label>
@@ -258,7 +280,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '26', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(26) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d42.png", size: "30x70" %>
                           <label class="text-center">4.2</label>
                         </label>
@@ -267,7 +290,8 @@
                     <td class="border_right">
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '25', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(25) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d41.png", size: "30x70" %>
                           <label class="text-center">4.1</label>
                         </label>
@@ -276,7 +300,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '17', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(17) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d31.png", size: "30x70" %>
                           <label class="text-center">3.1</label>
                         </label>
@@ -285,7 +310,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '18', onClick:"submit()" %>    
+                          <% @diente = Spree::Diente.find(18) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d32.png", size: "30x70" %>
                           <label class="text-center">3.2</label>
                         </label>
@@ -294,7 +320,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '19', onClick:"submit()" %>      
+                          <% @diente = Spree::Diente.find(19) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d33.png", size: "30x70" %>
                           <label class="text-center">3.3</label>
                         </label>
@@ -303,7 +330,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '20', onClick:"submit()" %>        
+                          <% @diente = Spree::Diente.find(20) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d34.png", size: "30x70" %>
                           <label class="text-center">3.4</label>
                         </label>
@@ -312,7 +340,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '21', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(21) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d35.png", size: "30x70" %>
                           <label class="text-center">3.5</label>
                         </label>
@@ -321,7 +350,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '22', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(22) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d36.png", size: "30x70" %>
                           <label class="text-center">3.6</label>
                         </label>
@@ -330,7 +360,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '23', onClick:"submit()" %>
+                          <% @diente = Spree::Diente.find(23) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d37.png", size: "30x70" %>
                           <label class="text-center">3.7</label>
                         </label>
@@ -339,7 +370,8 @@
                     <td>
                       <div>
                         <label>
-                          <%= f.radio_button :diente_id, '24', onClick:"submit()" %>  
+                          <% @diente = Spree::Diente.find(24) %>
+                          <%= check_box_tag "dientes[]", @diente.id %>
                           <%= image_tag "dientes/d38.png", size: "30x70" %>
                           <label class="text-center">3.8</label>
                         </label>
@@ -349,11 +381,9 @@
                 </tbody>
               </table>             
             </div><br>
-            <script type="text/javascript">
-              function submit(){
-                javascript:document.new_pedido.submit();
-              }
-            </script>
+            <div class="actions">
+              <%= f.submit :class => "btn btn-success" %>
+            </div>
           </div>
         </div>
       </div>

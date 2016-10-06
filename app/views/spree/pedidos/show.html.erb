@@ -3,8 +3,6 @@
       <%= render :partial => 'spree/shared/taxonomies' %>
     </div>
 <% end %>
-<p id="notice"><%= notice %></p>
-
 <div id="content" class="col-sm-8 col-md-9">
 
   <p>
@@ -45,16 +43,61 @@
   </p>
   <% end %>
 
-  <% if @pedido.cover_file_name? %>
-  <p>
-    <strong>Imagen de Observación:</strong>
-    <%= link_to @pedido.cover_file_name, @pedido.cover.url %>
-  </p>
-  <% end %>
+  <strong>Fotografía(s) de Referencia</strong>
+   <!-- START: ROOM GALLERY -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Carousel indicators -->
+      <%if @pedido.pictures.count > 1 %>
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <%for i in 1..@pedido.pictures.count-1%>
+            <li data-target="#myCarousel" data-slide-to=<%= "#{i}" %>></li>
+          <%end%>
+        </ol> 
+      <%end%>
+      <!-- Wrapper for carousel items -->
+          <div class="carousel-inner">
+            <%unless @pedido.pictures.empty?%>
+                <% @pedido.pictures.each do |pic| %>
+                  <%if pic == @pedido.pictures.first%>
+                    <div class="active item">
+                    <div class="cropApartmentShow">
+                      <%= image_tag pic.cover.url, class:"img-responsive" %>
+                      </div>
+                    </div>
+                  <%else%>
+                    <div class="item">
+                    <div class="cropApartmentShow">
+                      <%= image_tag pic.cover.url, class:"img-responsive" %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+            <%else%>
+              <div class="active item">
+                <%= image_tag("sinfoto.jpg", :alt => "No tiene fotografía", class:"img-responsive") %>
+              </div>
+            <%end%>
+          </div>
+          <!-- Carousel controls -->
+          <%if @pedido.pictures.count > 1 %>
+            <a id="carousel-arrows" class="carousel-control left" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a id="carousel-arrows" class="carousel-control right" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          <%end%>
+  </div>
+  <br>
 
   <p>
-    <strong>Diente:</strong>
-      <%= @pedido.diente.numero %>
+    <strong>Diente(s):</strong>
+      <% @pedidos.each do |pedido| %>
+        <% pedido.dientes.each do |diente| %>
+          <%= diente.numero %>
+        <% end %>
+      <% end %>
   </p>
 
   <p>

@@ -21,7 +21,9 @@
 	        <td><%= pedido.nombres %>&nbsp;<%= pedido.apellidos %></td>
 	        <td><%= pedido.trabajo.nombre %></td>
 	        <td><%= pedido.material.nombre %></td>
-	        <td><%= pedido.diente.numero %></td>
+	        <% pedido.dientes.each do |diente| %>
+		        <td><%= diente.numero %></td>
+		    <% end %>
 	      </tr>
 	  </tbody>
 	</table>

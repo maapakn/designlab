@@ -1,6 +1,8 @@
-<div data-hook="homepage_sidebar_navigation">	
-	<%= render :partial => 'spree/shared/sidebars' %>
-</div>
+<% content_for :sidebars do %>
+    <div data-hook="homepage_sidebar_navigation">
+      <%= render :partial => 'spree/shared/taxonomies' %>
+    </div>
+<% end %>
 <div>
 	<p>Reporte Por Nombre de Paciente</p>
 	<%= form_tag "/search/create", method: :get, remote: true, id: "search-form" do %>

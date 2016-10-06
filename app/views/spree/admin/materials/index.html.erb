@@ -1,4 +1,10 @@
-<h2>Materiales</h2>
+<% content_for :page_title do %>
+  <%= "Materiales" %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to "Nuevo Material", new_admin_material_path, :class => "btn-success", :icon => 'add', :id => 'admin_new_user_link' %>
+<% end %>
 
 <table class="table table-striped order-summary">
   <thead>
@@ -25,7 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Nuevo Material', new_admin_material_path %>
