@@ -9,6 +9,13 @@
     <h3>Pedido ID <%= @pedido.id %></h3>
   </p>
 
+  <% if current_spree_user.dentists.present? %>
+  <p>
+    <strong>Dentista que Realizo el Pedido</strong>
+    <%= @pedido.dentist.nombre %>
+  </p>
+  <% end %>
+
   <p>
     <strong>Fecha de Realización:</strong>
     <%= @pedido.created_at.strftime("%d/%m/%Y - %T") %>

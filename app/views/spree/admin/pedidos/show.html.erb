@@ -102,8 +102,12 @@
   <br>
 
   <p>
-    <strong>Diente:</strong>
-      <%= @pedido.diente.numero %>
+    <strong>Diente(s):</strong>
+      <% @pedidos.each do |pedido| %>
+        <% pedido.dientes.each do |diente| %>
+          <%= diente.numero %>
+        <% end %>
+      <% end %>
   </p>
 
   <p>

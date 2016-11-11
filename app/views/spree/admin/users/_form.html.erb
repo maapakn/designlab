@@ -21,7 +21,6 @@
       <%= f.text_field :institucion, :class => 'form-control', :placeholder => "Nombre de Consulta o Clínica" %>
     <% end %>
 
-    <% if @user.facturacion == "Si" %>
     <%= f.field_container :rutf, class: ['form-group'] do %>
       <%= f.label :rutf, "Rut Empresa" %>
       <%= f.text_field :rutf, :class => 'form-control', :placeholder => 'Rut Empresa' %>
@@ -31,6 +30,14 @@
       <%= label :rsocialf, "Razón Social" %>
       <%= f.text_field :rsocialf, :class => 'form-control', :placeholder => 'Razón Social' %>
     <% end %>
+
+    <%= f.field_container :dentists, class: ['form-group'] do %>
+      <%= f.fields_for :dentists do |h| %>
+        <%= h.label :nombre, "Nombre del Dentista" %>
+        <%= h.text_field :nombre, :class => 'form-control', :placeholder => "Nombre del Dentista" %>
+        <%= h.link_to_remove "Eliminar Dentista", class: ['pull-right'] %>
+      <% end %>
+      <%= f.link_to_add "Agregar Dentista", :dentists %>
     <% end %>
 
     <div data-hook="admin_user_form_roles" class="form-group">
@@ -78,7 +85,6 @@
       <%= f.text_field :direccion, :class => 'form-control', :placeholder => "Dirección de Despacho" %>
     <% end %>
 
-    <% if @user.facturacion == "Si" %>
     <%= f.field_container :girof, class: ['form-group'] do %>
       <%= f.label :girof, "Giro" %>
       <%= f.text_field :girof, :class => 'form-control', :placeholder => 'Giro' %>
@@ -87,7 +93,6 @@
     <%= f.field_container :direccionf, class: ['form-group'] do %>
       <%= f.label :direccionf, "Dirección de Facturación" %>
       <%= f.text_field :direccionf, :class => 'form-control', :placeholder => 'Dirección de Facturación' %>
-    <% end %>
     <% end %>
   </div>
 </div>

@@ -9,4 +9,9 @@
     <%= column_chart @grafico, id: "trabajo-chart", width: "800px", height: "500px" %>
 	<h5>Gráfico Total Facturado Últimos 6 Meses:</h5>
     <%= column_chart @grafico2, id: "trabajo-chart2", width: "800px", height: "500px" %>
+    <% date = Date.new %>
+    <!--<%= select_month(date) %>
+    <% if date == "febrero" %>
+    	<%= column_chart @grafico3, id: "trabajo-chart3", width: "800px", height: "500px" %>
+    <% end %>-->
 </div>

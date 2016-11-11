@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915011908) do
+ActiveRecord::Schema.define(version: 20161102045210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,15 @@ ActiveRecord::Schema.define(version: 20160915011908) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "spree_dentists", force: :cascade do |t|
+    t.string   "nombre"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spree_dentists", ["user_id"], name: "index_spree_dentists_on_user_id", using: :btree
 
   create_table "spree_dientes", force: :cascade do |t|
     t.string   "numero"
@@ -364,8 +373,10 @@ ActiveRecord::Schema.define(version: 20160915011908) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "dentist_id"
   end
 
+  add_index "spree_pedidos", ["dentist_id"], name: "index_spree_pedidos_on_dentist_id", using: :btree
   add_index "spree_pedidos", ["material_id"], name: "index_spree_pedidos_on_material_id", using: :btree
   add_index "spree_pedidos", ["shipping_category_id"], name: "index_spree_pedidos_on_shipping_category_id", using: :btree
   add_index "spree_pedidos", ["trabajo_id"], name: "index_spree_pedidos_on_trabajo_id", using: :btree

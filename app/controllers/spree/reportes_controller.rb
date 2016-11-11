@@ -37,8 +37,10 @@ module Spree
 	  	fecha_actual = Time.current.to_s
 	  	fecha_anterior1 = 1.month.ago.to_s
 	  	fecha_anterior = 6.month.ago.to_s
+	  	fecha_febrero = 
 	  	@grafico = current_spree_user.pedidos.joins(:material).where("spree_pedidos.estado_pago = 2 AND spree_pedidos.created_at BETWEEN ? AND ?",fecha_anterior1,fecha_actual).group_by_month_of_year("spree_pedidos.created_at", format: "%B").sum("spree_materials.precio")
 	  	@grafico2 = current_spree_user.pedidos.joins(:material).where("spree_pedidos.estado_pago = 2 AND spree_pedidos.created_at BETWEEN ? AND ?",fecha_anterior,fecha_actual).group_by_month_of_year("spree_pedidos.created_at", format: "%B").sum("spree_materials.precio")
+	  	#@grafico3 = current_spree_user.pedidos.joins(:material).where("spree_pedidos.estado_pago = 2 AND spree_pedidos.created_at ?",fecha_febrero).group_by_month_of_year("spree_pedidos.created_at", format: "%B").sum("spree_materials.precio")
 	  end
 	end
 end

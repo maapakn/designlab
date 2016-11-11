@@ -1,8 +1,18 @@
 <% content_for :page_title do %>
   <%= plural_resource_name(Spree::Order) %>
 <% end %>
-<%if @pedido.present?%>
-<% @pedido.each do |p| %>
+
+<div class="col-sm-12" id="filtros">
+  <h4>Buscar Pedido</h4>
+  <form>
+   <input class="form-control js-quick-search" width="auto" placeholder="Busque Pedido" name="q" <%= @q %> ><br>
+    <%= button Spree.t(:search), 'search' %>
+  </form>
+  <br>
+</div>
+
+<%if @pedidos.present?%>
+<% @pedidos.each do |p| %>
 <table class="table table-striped order-summary">
   <thead>
     <tr>
@@ -42,10 +52,22 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @pedido %>
+<%= paginate @pedidos %>
 <br>
 <%else%>
  <div class="alert alert-info no-objects-found">
 <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>
 </div>
 <%end%>
+<script type="text/javascript">
+    var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, no se encontro nada!'},
+      '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+</script>

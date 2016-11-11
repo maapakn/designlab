@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Añadidos
+gem 'khipu-rails'
+gem "nested_form"
 gem 'rut_validator'
 gem 'carrierwave'
 gem 'file_validators'

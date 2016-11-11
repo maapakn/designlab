@@ -12,6 +12,8 @@ module Spree
 
     has_many :pedidos, :dependent => :destroy
     has_many :transactions, :dependent => :destroy
+    has_many :dentists, :dependent => :destroy
+    accepts_nested_attributes_for :dentists, :allow_destroy => true
 
     before_validation :set_login
 

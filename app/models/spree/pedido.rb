@@ -1,12 +1,15 @@
 module Spree	
 	class Pedido < Spree::Base
+    include Filterable
     has_many :pictures, :dependent => :destroy
     has_many :pedidos_dientes, :dependent => :destroy
     has_many :dientes, through: :pedidos_dientes
+    belongs_to :dentist
 	  belongs_to :trabajo 
 	  belongs_to :material
 	  belongs_to :user
     before_save :valores_por_default
+
 
     validates_presence_of :nombres, :on => :create, length:{in:4..30, 
        too_short:"ingresado es demasiado corto (3 caracteres minimo)", 

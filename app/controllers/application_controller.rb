@@ -34,7 +34,6 @@ module Spree
         direccionf
         institucion
     )
-
     # bunch of code
 
   end

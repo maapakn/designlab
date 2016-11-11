@@ -22,6 +22,12 @@
               <b>Cargar STL: </b><%= f.file_field :file, value: "Seleccione Archivo STL" %><br> 
             </div>
             <%end%>
+            <% if current_spree_user.dentists.present? %>
+            <div class="form-group">
+              <%= f.label :dentist, "Seleccione Dentista" %>
+              <%= collection_select(:pedido, :dentist_id, @dentistas, :id, :nombre) %>
+            </div>
+            <% end %>
             <div class="form-group">
             <table>
               <thead>

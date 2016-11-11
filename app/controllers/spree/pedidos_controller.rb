@@ -45,6 +45,7 @@ module Spree
 	  # GET /pedidos/new
 	  def new
 	  	@dientes = Spree::Diente.all
+	  	@dentistas = current_spree_user.dentists.all
 	    @pedido = current_spree_user.pedidos.new
     	@pedidos = current_spree_user.pedidos.where(estado_pago: 1)
 	    @taxonomies = Spree::Taxonomy.includes(root: :children)
@@ -71,6 +72,8 @@ module Spree
 	      amount: cost*100)
 	    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token, review: false)
 	  end
+
+	  
 
 	  # POST /pedidos
 	  # POST /pedidos.json
@@ -120,7 +123,7 @@ module Spree
 
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def pedido_params
-	      params.require(:pedido).permit(:nombres, :apellidos, :observacion, :trabajo_id, :material_id, :pictures, :file, :respuesta, :diente_ids => [])
+	      params.require(:pedido).permit(:nombres, :apellidos, :observacion, :trabajo_id, :material_id, :pictures, :file, :respuesta, :dentist_id, :diente_ids => [])
 	    end
 	end
 end

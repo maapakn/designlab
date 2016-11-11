@@ -12,6 +12,9 @@
 		  <thead>
 		    <tr>
 		      <th>Nombre del Paciente</th>
+		      <% if current_spree_user.dentists.present? %>
+		      <th>Dentista</th>
+		      <% end %>
 		      <th>Trabajo</th>
 		      <th>Material</th>
 		      <th>Estado</th>
@@ -23,6 +26,9 @@
 		  <tbody>
 		      <tr>
 		        <td><%= p.nombres %>&nbsp;<%= p.apellidos %></td>
+		      	<% if current_spree_user.dentists.present? %>		        
+		        <td><%= p.dentist.nombre %></td>
+		        <% end %>
 		        <td><%= p.trabajo.nombre %></td>
 		        <td><%= p.material.nombre %></td>
 		        <td><%= p.state %></td>

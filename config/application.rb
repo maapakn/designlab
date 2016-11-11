@@ -19,9 +19,9 @@ module Delab
       :address => "smtp.gmail.com",
       :port =>  587,
       :authentication => :plain,
-      :domain => "gmail.com",
-      :user_name => "admin",
-      :password => "delab2016",
+      :domain => "delab.cl",
+      :user_name => ENV['gmail_username'],
+      :password => ENV['gmail_password'],
       :enable_starttls_auto => true
     }
 
@@ -35,6 +35,10 @@ module Delab
       Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
+    end
+
+    KhipuRails.configure do |config|
+      config.add_receiver "92813", "597fecbb375ba864827c1895bcfca2103f96a8e5", :dev
     end
 
     # Settings in config/environments/* take precedence over those specified here.

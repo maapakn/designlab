@@ -43,10 +43,11 @@
     </div>
   </li>
   <br>
+  <!--<div data-no-turbolinks class="pull-right">
+    &nbsp;&nbsp;<%=link_to image_tag("https://s3.amazonaws.com/static.khipu.com/buttons/2015/200x75-transparent.png"), pedidos_khipu_path%>
+  </div>-->
   <div data-no-turbolinks class="pull-right">
-    <%=link_to(pedidos_express_path, class: "btn btn-info btn-lg") do%>
-        Pagar PayPal
-    <%end%>
+    <%=link_to image_tag("http://www.signashop.com.br/media/parceiros/paypal1.png"), pedidos_express_path %>
   </div>
   <% if current_spree_user.institucion == 'Si' %>
   <div data-no-turbolinks class="pull-center">

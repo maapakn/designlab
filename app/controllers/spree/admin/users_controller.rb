@@ -19,6 +19,11 @@ module Spree
         redirect_to edit_admin_user_path(@user)
       end
 
+      def new
+        @user = Spree::User.new
+        @user.dentists.build
+      end
+
       def create
         @user = Spree.user_class.new(user_params)
         if @user.save
@@ -27,6 +32,10 @@ module Spree
         else
           render :new
         end
+      end
+
+      def edit
+        @user = Spree::User.find(params[:id])
       end
 
       def update
@@ -108,11 +117,8 @@ module Spree
       private
 
       def user_params
-        params.require(:user).permit(permitted_user_attributes |
-                                     [spree_role_ids: [],
-                                      ship_address_attributes: permitted_address_attributes,
-                                      bill_address_attributes: permitted_address_attributes])
-      end
+        params.require(:user).permit(:email, :password, :password_confirmation, :nombre, :rut, :facturacion, :telefono, :direccion, :roles_mask, :rutf, :rsocial, :girof, :direccionf, :institucion, dentists_attributes: [:id, :nombre, :_destroy])
+       end
 
       # handling raise from Spree::Admin::ResourceController#destroy
       def user_destroy_with_orders_error
