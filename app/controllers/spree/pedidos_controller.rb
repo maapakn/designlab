@@ -62,6 +62,9 @@ module Spree
 		end
 	  end
 
+	  def pagar
+	  end
+
 	  def express
 	    cost = current_spree_user.costo_compra_pendiente
 	    response = EXPRESS_GATEWAY.setup_purchase(cost*100,

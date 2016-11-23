@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   Spree::Core::Engine.routes.draw do
     get "pedidos/express"
     get "pedidos/khipu"
+    get "pedidos/pagar"
     get "pedidos/comprar"
     get "transactions/checkout"
     get 'search/create'

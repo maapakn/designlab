@@ -30,13 +30,13 @@
           <% end %>
           <td align="right"><%= link_to 'Eliminar', pedido, method: :delete, class:"btn btn-danger", data: { confirm: '¿Esta seguro que desea Eliminar?' } %></td>
         </tr>
+        <% end %>
     </tbody>
   </table>
-  <% end %>
   <br>
   <li class="list-group-item" id="total">
     <div class="row">
-      <div class="col-md-6"><b>Total</b></div>
+      <div class="col-md-6"><b>Total a Pagar:</b></div>
       <div class="col-md-6">
         <p class="text-right">$<%=current_spree_user.costo_compra_pendientes%> CLP</p>
       </div>
@@ -45,15 +45,13 @@
   <br>
   <!--<div data-no-turbolinks class="pull-right">
     &nbsp;&nbsp;<%=link_to image_tag("https://s3.amazonaws.com/static.khipu.com/buttons/2015/200x75-transparent.png"), pedidos_khipu_path%>
+  </div>
+  <div data-no-turbolinks class="pull-right">
+    <%=link_to 'Pagar', pedidos_pagar_path, class: "btn btn-info btn-lg" %>
   </div>-->
   <div data-no-turbolinks class="pull-right">
-    <%=link_to image_tag("http://www.signashop.com.br/media/parceiros/paypal1.png"), pedidos_express_path %>
-  </div>
-  <% if current_spree_user.institucion == 'Si' %>
-  <div data-no-turbolinks class="pull-center">
     <%=link_to(pedidos_comprar_path, class: "btn btn-info btn-lg") do%>
         Solicitar
     <%end%>
   </div>
-  <% end %>  
 <% end %>

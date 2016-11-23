@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Añadidos
+gem "bootstrap-sass"
+gem "font-awesome-rails"
 gem 'khipu-rails'
 gem "nested_form"
 gem 'rut_validator'

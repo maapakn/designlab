@@ -3,8 +3,8 @@
     <%= render :partial => 'spree/shared/taxonomies' %>
   </div>
 <% end %>
-	<div id="content" class='col-sm-12' data-hook>
-        <div id="form-pedido" class="col-md-6 col-md-offset-3">
+<div id="content" class='col-sm-12' data-hook>
+    <div id="form-pedido" class="col-md-6 col-md-offset-3">
 	<% if @pedido.present? %>
 		<h3>Pedidos Activos</h3>
 		<% @pedido.each do |p| %>
@@ -45,8 +45,8 @@
 		<% end %>
 	<% end %>
 		<%= paginate @pedido %>
-<% if !@pedido.present? %>
-	<div class="alert alert-info"><%= "No tiene Pedidos Activos" %></div>
-<% end %>
-</div>
+		<% if !@pedido.present? %>
+			<div class="alert alert-info"><%= "No tiene Pedidos Activos" %></div>
+		<% end %>
+	</div>
 </div>

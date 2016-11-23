@@ -67,3 +67,6 @@ textarea#pedido_observacion.form-control{
 	padding: 50px 15px;
 	font-size: 17px;
 }
+.modal{
+	display:block;
+}

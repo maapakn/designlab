@@ -1,7 +1,29 @@
+<script type="text/javascript">
+	function myFunction() {
+		var modal = document.getElementById('pedido-modal');
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() {
+		    modal.style.display = "none";
+		}
+	}
+</script>
 <% content_for :sidebar do %>
   <div data-hook="homepage_sidebar_navigation">
     <%= render :partial => 'spree/shared/taxonomies' %>
   </div>
+<% end %>
+<% if notice == 'El Pedido se ha creado' %>
+<div id="pedido-modal" class="modal fade in">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" onclick="myFunction()" class="close" ><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">El Pedido se ha creado</h4>
+      </div>
+      <%= image_tag("gracias.jpg", width: '600', height: '400') %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <% end %>
 <%= render 'form' %>
 <%= render 'shop' %>

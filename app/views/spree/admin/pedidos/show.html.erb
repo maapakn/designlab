@@ -4,6 +4,13 @@
     <h3>Pedido ID <%= @pedido.id %></h3>
   </p>
 
+  <% if @pedido.user.dentists.present? %>
+  <p>
+    <strong>Dentista que Realizo el Pedido:</strong>
+    <%= @pedido.dentist.nombre %>
+  </p>
+  <% end %>
+
   <p>
     <strong>Usuario:</strong>
     <%= @pedido.user.nombre %>
@@ -123,7 +130,7 @@
   <% end %>
 
   <p>
-    <br><br><%= link_to image_tag("3.png", size: "40"), admin_pedidos_path %>
+    <br><br><%= link_to image_tag("3.png", size: "40"), :back %>
     <br><strong>Volver</strong>
   </p>
 

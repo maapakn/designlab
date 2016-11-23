@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<h1><i class="fa fa-shopping-cart"></i> Pagar</h1>
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-md-6"><b>Total a Pagar:</b></div>
+				<div class="col-md-6">
+					<p class="text-right">$<%=current_spree_user.costo_compra_pendientes%> CLP</p>
+				</div>
+			</div>
+		</li>
+		<br>
+		<div class="pull-left">
+			<%=link_to 'Volver', new_pedido_path, class: "btn btn-info btn-lg"%>
+		</div>
+		<div data-no-turbolinks class="pull-right">
+		    &nbsp;&nbsp;<%=link_to image_tag("https://s3.amazonaws.com/static.khipu.com/buttons/2015/200x75-transparent.png"), pedidos_khipu_path%>
+		</div>
+		<div data-no-turbolinks class="pull-right">
+			<strong>Pagar con PayPal:</strong><%=link_to image_tag("http://www.signashop.com.br/media/parceiros/paypal1.png"), pedidos_express_path %>
+		</div>
+	</div>
+</div>

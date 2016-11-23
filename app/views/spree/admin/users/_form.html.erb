@@ -56,8 +56,16 @@
       <%= f.label :roles, 'Impresion Digital:' %>
       <%= f.radio_button :roles_mask, 'userdigital'%>
       <h5>Usuario Institucional</h5>
-      <%= f.label :institucion, 'Habilitar Usuario' %>
-      <%= f.radio_button :institucion, 'Si', :checked => false %>
+      <% if @user.institucion == 'Si' %>
+        <p>El Usuario está Habilitado para Solicitar</p>
+      <% else %>
+        <p>El Usuario no está Habilitado para Solicitar</p>
+      <% end %>
+      <%= f.label :institucion, 'Habilitar Usuario:' %><br>
+      <%= f.label :institucion, 'Si' %>
+      <%= f.radio_button :institucion, 'Si', :checked => true %>
+      <%= f.label :institucion, 'No' %>
+      <%= f.radio_button :institucion, 'No' %>
     </div>
 
   </div>

@@ -12,7 +12,6 @@
 </div>
 
 <%if @pedidos.present?%>
-<% @pedidos.each do |p| %>
 <table class="table table-striped order-summary">
   <thead>
     <tr>
@@ -28,6 +27,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+<% @pedidos.each do |p| %>
+
 
   <tbody>
       <tr>
@@ -59,15 +60,3 @@
 <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>
 </div>
 <%end%>
-<script type="text/javascript">
-    var config = {
-      '.chosen-select'           : {},
-      '.chosen-select-deselect'  : {allow_single_deselect:true},
-      '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Oops, no se encontro nada!'},
-      '.chosen-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
-</script>

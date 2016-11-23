@@ -420,11 +420,13 @@ PLATFORMS
 
 DEPENDENCIES
   activemerchant
+  bootstrap-sass
   byebug
   carrierwave
   chartkick
   coffee-rails (~> 4.1.0)
   file_validators
+  font-awesome-rails
   groupdate
   jbuilder (~> 2.0)
   jquery-rails

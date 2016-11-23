@@ -9,7 +9,7 @@ module Spree
 		  	if @q
 		  		@pedidos = Spree::Pedido.joins(:user).joins(:material).joins(:trabajo).where("spree_pedidos.estado_pago = 2 AND spree_pedidos.state ILIKE ? OR spree_pedidos.nombres ILIKE ? OR spree_pedidos.apellidos ILIKE ? OR spree_users.nombre ILIKE ? OR spree_materials.nombre ILIKE ? OR spree_trabajos.nombre ILIKE ?","%#{@q}%","%#{@q}%","%#{@q}%","%#{@q}%","%#{@q}%","%#{@q}%").order(created_at: :DESC).page(params[:page]).per(6)
 		  	else 
-		    	@pedidos = Spree::Pedido.where(estado_pago: 2).order(created_at: :DESC).page(params[:page]).per(6)
+		    	@pedidos = Spree::Pedido.where(estado_pago: 2).order(created_at: :DESC).page(params[:page]).per(20)
 		  	end
 		  end
 
